@@ -11,9 +11,9 @@ class HtmlGenerator
 
   def index
     print_header
-    puts "Action: Index"
+    puts "Index of LCBO products"
 
-    products = retrieve_data
+    products = retrieve_data  #products is an array containing all products
 
     products.each do |product|
       display_product(product)
@@ -22,10 +22,18 @@ class HtmlGenerator
     print_footer
   end
 
+
   private
 
   def display_product(product)
     puts "<p>#{product['name']}</p>"
+    puts "<p><img src='#{product['image_url']}'></p>"
+    puts "<p>#{product['id']}</p>"
+    puts "<p>#{product['producer_name']}</p>"
+    puts "<p>#{product['primary_category']}</p>"
+    puts "<p>#{product['secondary_category']}</p>"
+    puts "<p>#{product['package_unit_volume_in_milliliters']} ml</p>"
+    puts "<p>$#{product['price_in_cents'].to_f/100}</p>"
   end
 
   def print_header
